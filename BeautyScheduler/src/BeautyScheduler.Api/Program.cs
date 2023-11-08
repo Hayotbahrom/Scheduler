@@ -10,7 +10,6 @@ namespace BeautyScheduler.Api
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Database configuration
             builder.Services.AddDbContext<BeautySchedulerDbContext>(options =>
             {
                 options.UseNpgsql(builder.Configuration.GetConnectionString("DefaulConnection"));
