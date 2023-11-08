@@ -14,6 +14,6 @@ namespace BeautyScheduler.Domain.Entites
         public Service Service { get; set; }
         public Pay PayType {  get; set; }
         public decimal? Amount { get; set; }
-        public DateTime TransactionDate { get; set; }
+        public DateTime TransactionDate { get; set; } = DateTime.UtcNow;
     }
 }

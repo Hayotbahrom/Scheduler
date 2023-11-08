@@ -562,6 +562,7 @@
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "12.0.1",
+          "BeautyScheduler.Data": "1.0.0",
           "BeautyScheduler.Domain": "1.0.0"
         },
         "compile": {

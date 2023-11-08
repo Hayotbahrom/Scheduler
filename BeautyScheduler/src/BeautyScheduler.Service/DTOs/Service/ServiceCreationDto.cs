@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace BeautyScheduler.Service.DTOs.Service
 {
-    internal class ServiceCreationDto
+    public class ServiceCreationDto
     {
+        public string ServiceName { get; set; }
+        public string Description { get; set; }
+        public TimeSpan Duration { get; set; }
+        public decimal Price { get; set; }
     }
 }

@@ -249,6 +249,9 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
+              "C:\\Users\\Hayotbahrom\\Desktop\\FinalExamProject\\BeautyScheduler\\src\\BeautyScheduler.Data\\BeautyScheduler.Data.csproj": {
+                "projectPath": "C:\\Users\\Hayotbahrom\\Desktop\\FinalExamProject\\BeautyScheduler\\src\\BeautyScheduler.Data\\BeautyScheduler.Data.csproj"
+              },
               "C:\\Users\\Hayotbahrom\\Desktop\\FinalExamProject\\BeautyScheduler\\src\\BeautyScheduler.Domain\\BeautyScheduler.Domain.csproj": {
                 "projectPath": "C:\\Users\\Hayotbahrom\\Desktop\\FinalExamProject\\BeautyScheduler\\src\\BeautyScheduler.Domain\\BeautyScheduler.Domain.csproj"
               }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BeautyScheduler.Domain.Entites
 {
-    public class CustomerService : Auditable
+    public class ServiceCustomer : Auditable
     {
         public long CustomerId { get; set; }
         public Customer Customer { get; set; }

@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace BeautyScheduler.Service.DTOs.StaffService
 {
-    internal class StaffServiceUpdateDto
+    public class StaffServiceUpdateDto
     {
+        public long StaffId { get; set; }
+        public long ServiceId { get; set; }
     }
 }

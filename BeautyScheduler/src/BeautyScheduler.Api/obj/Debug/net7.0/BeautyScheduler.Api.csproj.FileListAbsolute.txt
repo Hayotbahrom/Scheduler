@@ -45,3 +45,7 @@ C:\Users\Hayotbahrom\Desktop\FinalExamProject\BeautyScheduler\src\BeautySchedule
 C:\Users\Hayotbahrom\Desktop\FinalExamProject\BeautyScheduler\src\BeautyScheduler.Api\bin\Debug\net7.0\BeautyScheduler.Domain.dll
 C:\Users\Hayotbahrom\Desktop\FinalExamProject\BeautyScheduler\src\BeautyScheduler.Api\bin\Debug\net7.0\BeautyScheduler.Data.pdb
 C:\Users\Hayotbahrom\Desktop\FinalExamProject\BeautyScheduler\src\BeautyScheduler.Api\bin\Debug\net7.0\BeautyScheduler.Domain.pdb
+C:\Users\Hayotbahrom\Desktop\FinalExamProject\BeautyScheduler\src\BeautyScheduler.Api\bin\Debug\net7.0\AutoMapper.dll
+C:\Users\Hayotbahrom\Desktop\FinalExamProject\BeautyScheduler\src\BeautyScheduler.Api\bin\Debug\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\Hayotbahrom\Desktop\FinalExamProject\BeautyScheduler\src\BeautyScheduler.Api\bin\Debug\net7.0\BeautyScheduler.Service.dll
+C:\Users\Hayotbahrom\Desktop\FinalExamProject\BeautyScheduler\src\BeautyScheduler.Api\bin\Debug\net7.0\BeautyScheduler.Service.pdb

@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using BeautyScheduler.Data.DbContexts;
 using BeautyScheduler.Service.Mappers;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace BeautyScheduler.Api
 {
@@ -12,8 +13,9 @@ namespace BeautyScheduler.Api
 
             builder.Services.AddDbContext<BeautySchedulerDbContext>(options =>
             {
-                options.UseNpgsql(builder.Configuration.GetConnectionString("DefaulConnection"));
+                options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
             });
+
             // Add services to the container.
 
             builder.Services.AddControllers();
@@ -21,7 +23,8 @@ namespace BeautyScheduler.Api
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
-            builder.Services.AddAutomapper(typeof(MappingProfile));
+            // Automapper
+            builder.Services.AddAutoMapper(typeof(MappingProfile));
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
