@@ -11,7 +11,7 @@ namespace BeautyScheduler.Service.Interfaces
     public interface ICustomerService
     {
         Task<CustomerResultDto> AddAsync(CustomerCreationDto dto);
-        Task<CustomerResultDto> ModifyAsync(CustomerUpdateDto dto);
+        Task<CustomerResultDto> ModifyAsync(long id, CustomerUpdateDto dto);
         Task<bool> RemoveAsync(long id);
         Task<IEnumerable<CustomerResultDto>> RetrieveAllAsync(PaginationParams @params);
         Task<CustomerResultDto> RetrieveByIdAsync(long id);

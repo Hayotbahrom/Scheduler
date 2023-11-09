@@ -16,7 +16,7 @@ namespace BeautyScheduler.Data.DbContexts
         public DbSet<Staff> Staffs { get; set; }
         public DbSet<Service> Services { get; set; }
         public DbSet<ServiceCustomer> CustomerServices { get; set; }
-        public DbSet<StaffService> StaffServices { get; set; }
+        public DbSet<ServiceStaff> StaffServices { get; set; }
 
         public BeautySchedulerDbContext(DbContextOptions<BeautySchedulerDbContext> options) : base(options)
         {

@@ -18,5 +18,6 @@ namespace BeautyScheduler.Domain.Entites
         public Gender GenderType { get; set; }
         public Specialty SpecialtyType { get; set; }
         public short WorkingHour { get; set; }
+        public ICollection<ServiceStaff> Services { get; set; }
     }
 }

@@ -12,7 +12,7 @@ namespace BeautyScheduler.Service.Interfaces
     public interface IStaffService
     {
         Task<StaffResultDto> CreateAsync(StaffCreationDto dto);
-        Task<StaffResultDto> ModifyAsync(StaffUpdateDto dto);
+        Task<StaffResultDto> ModifyAsync(long id, StaffUpdateDto dto);
         Task<bool> RemoveAsync(long id);
         Task<IEnumerable<StaffResultDto>> RetrieveAllAsync(PaginationParams @params);
         Task<StaffResultDto> RetrieveByIdAsync(long id);

@@ -2,6 +2,8 @@ using Microsoft.EntityFrameworkCore;
 using BeautyScheduler.Data.DbContexts;
 using BeautyScheduler.Service.Mappers;
 using Microsoft.Extensions.DependencyInjection;
+using BeautyScheduler.Api.Extentions;
+using BeautyScheduler.Data.IRepositories;
 
 namespace BeautyScheduler.Api
 {
@@ -22,6 +24,11 @@ namespace BeautyScheduler.Api
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+           // builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            // Service extentions
+            builder.Services.AddCustomServices();
+            
 
             // Automapper
             builder.Services.AddAutoMapper(typeof(MappingProfile));

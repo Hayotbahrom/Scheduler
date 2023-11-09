@@ -18,77 +18,103 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using AutoMapper; // Make sure to include the necessary using directives
 using BeautyScheduler.Service.Extentions;
+using BeautyScheduler.Data.Repositories;
+using BeautyScheduler.Domain.Entites;
 
 public class ServiceStaffService : IServiceStaffService
 {
-    private readonly IRepository<StaffService> _repository;
     private readonly IMapper _mapper;
+    private readonly IServiceRepository _serviceRepository;
+    private readonly IStaffRepository _staffRepository;
+    private readonly IServiceStaffRepository _staffServiceRepository;
 
-    public ServiceStaffService(IRepository<StaffService> repository, IMapper mapper)
+    public ServiceStaffService(
+        IMapper mapper,
+        IServiceRepository serviceRepository,
+        IStaffRepository staffRepository,
+        IServiceStaffRepository staffServiceRepository)
     {
-        _repository = repository;
         _mapper = mapper;
+        _serviceRepository = serviceRepository;
+        _staffRepository = staffRepository;
+        _staffServiceRepository = staffServiceRepository;
     }
 
     public async Task<StaffServiceResultDto> CreateAsync(StaffServiceCreationDto dto)
     {
-        var existingStaffService = await _repository.SelectAll()
-            .Where(ss.)
+        //var staff = await _staffRepository.SelectAll()
+        //    .Where(s => s.Id == dto.StaffId)
+        //    .FirstOrDefaultAsync();
+        //if (staff is not null)
+        //    throw new BeautySchedulerException(409, "Customer is already  exist");
 
-        if (existingStaffService != null)
-            throw new BeautySchedulerException(404, "Staff service relationship already exists");
+        //var existingService = await _serviceRepository.SelectAll()
+        //        .Where(s => s.Id == dto.ServiceId)
+        //        .FirstOrDefaultAsync();
+        //if (existingService != null)
+        //    throw new BeautySchedulerException(404, "Service already exists");
 
-        var mappedStaffService = _mapper.Map<StaffService>(dto);
-        var result = await _repository.InsertAsync(mappedStaffService);
+        var mappedStaffService = _mapper.Map<ServiceStaff>(dto);
+        
+        var result = await _staffServiceRepository.InsertAsync(mappedStaffService);
 
         return _mapper.Map<StaffServiceResultDto>(result);
     }
 
-    public async Task<StaffServiceResultDto> ModifyAsync(StaffServiceUpdateDto dto)
+    public async Task<StaffServiceResultDto> ModifyAsync(long id, StaffServiceUpdateDto dto)
     {
-        var existingStaffService = await _repository.SelectByIdAsync(dto.Id);
+        var serviceStaff = await _staffServiceRepository.SelectAll()
+            .Where(ss => ss.Id == id)
+            .FirstOrDefaultAsync();
 
-        if (existingStaffService == null)
-            throw new BeautySchedulerException(409, "Staff service relationship not found");
+        if (serviceStaff is null)
+            throw new BeautySchedulerException(404, "StaffService is not found");
 
-        existingStaffService.StaffId = dto.StaffId;
-        existingStaffService.ServiceId = dto.ServiceId;
+        //var staff = await _staffRepository.SelectAll()
+        //    .Where(s => s.Id == dto.StaffId)
+        //    .FirstOrDefaultAsync();
+        //if (staff is  null)
+        //    throw new BeautySchedulerException(409, "Customer is not found");
 
-        await _repository.UpdateAsync(existingStaffService);
+        //var existingService = await _serviceRepository.SelectAll()
+        //        .Where(s => s.Id == dto.ServiceId)
+        //        .FirstOrDefaultAsync();
+        //if (existingService is null)
+        //    throw new BeautySchedulerException(404, "Service is not found");
 
-        return _mapper.Map<StaffServiceResultDto>(existingStaffService);
+        var mappedServiceStaff = _mapper.Map(dto, serviceStaff);
+        var result = await _staffServiceRepository.UpdateAsync(mappedServiceStaff);
+
+        return _mapper.Map<StaffServiceResultDto>(result);
     }
 
     public async Task<bool> RemoveAsync(long id)
     {
-        var existingStaffService = await _repository.SelectByIdAsync(id);
+        var serviceStaff = await _staffServiceRepository.SelectAll()
+            .Where(ss => ss.Id == id)
+            .FirstOrDefaultAsync();
+        if (serviceStaff is null)
+            throw new BeautySchedulerException(404, "StaffService is not found");
 
-        if (existingStaffService == null)
-            throw new BeautySchedulerException(409, "Staff service relationship not found");
-
-        await _repository.DeleteAsync(id);
-
-        return true;
+        return await _staffServiceRepository.DeleteAsync(id);
     }
 
     public async Task<IEnumerable<StaffServiceResultDto>> RetrieveAllAsync(PaginationParams @params)
     {
-        var staffServices = await _repository.SelectAll()
+        var serviceStaffs = await _staffServiceRepository.SelectAll()
             .AsNoTracking()
             .ToPagedList(@params)
             .ToListAsync();
-
-        return _mapper.Map<IEnumerable<StaffServiceResultDto>>(staffServices);
+        return _mapper.Map<IEnumerable<StaffServiceResultDto>>(serviceStaffs);
     }
 
     public async Task<StaffServiceResultDto> RetrieveByIdAsync(long id)
     {
-        var existingStaffService = await _repository.SelectByIdAsync(id);
+        var serviceStaff = await _staffServiceRepository.SelectByIdAsync(id);
+        if (serviceStaff is null)
+            throw new BeautySchedulerException(404, "Staff Service is not found");
 
-        if (existingStaffService == null)
-            throw new BeautySchedulerException(409, "Staff service relationship not found");
-
-        return _mapper.Map<StaffServiceResultDto>(existingStaffService);
+        return _mapper.Map<StaffServiceResultDto>(serviceStaff);
     }
 }
 

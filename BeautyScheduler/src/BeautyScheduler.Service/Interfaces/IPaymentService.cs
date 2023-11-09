@@ -12,7 +12,7 @@ namespace BeautyScheduler.Service.Interfaces
     public interface IPaymentService
     {
         Task<PaymentResultDto> CreateAsync(PaymentCreationDto dto);
-        Task<PaymentResultDto> ModifyAsync(PaymentUpdateDto dto);
+        Task<PaymentResultDto> ModifyAsync(long id, PaymentUpdateDto dto);
         Task<bool> RemoveAsync(long id);
         Task<IEnumerable<PaymentResultDto>> RetrieveAllAsync(PaginationParams @params);
         Task<PaymentResultDto> RetrieveByIdAsync(long id);

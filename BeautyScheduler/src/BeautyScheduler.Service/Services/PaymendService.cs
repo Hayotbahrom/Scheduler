@@ -40,12 +40,13 @@ namespace BeautyScheduler.Service.Services
             return _mapper.Map<PaymentResultDto>(result);
         }
 
-        public async Task<PaymentResultDto> ModifyAsync(PaymentUpdateDto dto)
+        public async Task<PaymentResultDto> ModifyAsync(long id, PaymentUpdateDto dto)
         {
             var paymentExists = await _repository.SelectAll()
-                .AnyAsync(p => p.ServiceId == dto.ServiceId && p.PayType == dto.PayType);
+                .Where(p => p.Id == id)
+                .FirstOrDefaultAsync();
 
-            if (!paymentExists)
+            if (paymentExists is null)
                 throw new BeautySchedulerException(409, "Payment not found");
 
             var payment = await _repository.SelectAll()

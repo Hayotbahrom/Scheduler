@@ -40,10 +40,10 @@ namespace BeautyScheduler.Service.Services
             return _mapper.Map<CustomerResultDto>(result);
         }
 
-        public async Task<CustomerResultDto> ModifyAsync(CustomerUpdateDto dto)
+        public async Task<CustomerResultDto> ModifyAsync(long id, CustomerUpdateDto dto)
         {
             var customer = await _repository.SelectAll()
-                .Where(c => c.Email.ToLower() == dto.Email.ToLower())
+                .Where(c => c.Id == id)
                 .FirstOrDefaultAsync();
 
             if (customer is null)

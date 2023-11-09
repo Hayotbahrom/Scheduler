@@ -10,7 +10,7 @@ namespace BeautyScheduler.Service.DTOs.Service
     {
         public string ServiceName { get; set; }
         public string Description { get; set; }
-        public TimeSpan Duration { get; set; }
+        public long Duration { get; set; }
         public decimal Price { get; set; }
     }
 }

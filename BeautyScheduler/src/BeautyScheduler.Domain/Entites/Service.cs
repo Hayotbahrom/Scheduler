@@ -11,7 +11,10 @@ namespace BeautyScheduler.Domain.Entites
     {
         public string ServiceName { get; set; }
         public string Description { get; set; }
-        public TimeSpan Duration { get; set; }
+        public long Duration { get; set; }
         public decimal Price { get; set; }
+        public ICollection<ServiceCustomer> CustomersServices { get; set; }
+        public ICollection<ServiceStaff> StaffServices { get; set; }
+        public ICollection<Payment> Payments { get; set; }
     }
 }

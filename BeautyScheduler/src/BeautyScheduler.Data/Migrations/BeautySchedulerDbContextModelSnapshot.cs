@@ -64,35 +64,6 @@ namespace BeautyScheduler.Data.Migrations
                     b.ToTable("Customers");
                 });
 
-            modelBuilder.Entity("BeautyScheduler.Domain.Entites.CustomerService", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<long>("CustomerId")
-                        .HasColumnType("bigint");
-
-                    b.Property<long>("ServiceId")
-                        .HasColumnType("bigint");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CustomerId");
-
-                    b.HasIndex("ServiceId");
-
-                    b.ToTable("CustomerServices");
-                });
-
             modelBuilder.Entity("BeautyScheduler.Domain.Entites.Payment", b =>
                 {
                     b.Property<long>("Id")
@@ -141,8 +112,8 @@ namespace BeautyScheduler.Data.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<TimeSpan>("Duration")
-                        .HasColumnType("interval");
+                    b.Property<long>("Duration")
+                        .HasColumnType("bigint");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("numeric");
@@ -157,6 +128,64 @@ namespace BeautyScheduler.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Services");
+                });
+
+            modelBuilder.Entity("BeautyScheduler.Domain.Entites.ServiceCustomer", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<long>("CustomerId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("ServiceId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CustomerId");
+
+                    b.HasIndex("ServiceId");
+
+                    b.ToTable("CustomerServices");
+                });
+
+            modelBuilder.Entity("BeautyScheduler.Domain.Entites.ServiceStaff", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<long>("ServiceId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("StaffId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ServiceId");
+
+                    b.HasIndex("StaffId");
+
+                    b.ToTable("StaffServices");
                 });
 
             modelBuilder.Entity("BeautyScheduler.Domain.Entites.Staff", b =>
@@ -207,36 +236,18 @@ namespace BeautyScheduler.Data.Migrations
                     b.ToTable("Staffs");
                 });
 
-            modelBuilder.Entity("BeautyScheduler.Domain.Entites.StaffService", b =>
+            modelBuilder.Entity("BeautyScheduler.Domain.Entites.Payment", b =>
                 {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
+                    b.HasOne("BeautyScheduler.Domain.Entites.Service", "Service")
+                        .WithMany()
+                        .HasForeignKey("ServiceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<long>("ServiceId")
-                        .HasColumnType("bigint");
-
-                    b.Property<long>("StaffId")
-                        .HasColumnType("bigint");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ServiceId");
-
-                    b.HasIndex("StaffId");
-
-                    b.ToTable("StaffServices");
+                    b.Navigation("Service");
                 });
 
-            modelBuilder.Entity("BeautyScheduler.Domain.Entites.CustomerService", b =>
+            modelBuilder.Entity("BeautyScheduler.Domain.Entites.ServiceCustomer", b =>
                 {
                     b.HasOne("BeautyScheduler.Domain.Entites.Customer", "Customer")
                         .WithMany()
@@ -255,27 +266,16 @@ namespace BeautyScheduler.Data.Migrations
                     b.Navigation("Service");
                 });
 
-            modelBuilder.Entity("BeautyScheduler.Domain.Entites.Payment", b =>
+            modelBuilder.Entity("BeautyScheduler.Domain.Entites.ServiceStaff", b =>
                 {
                     b.HasOne("BeautyScheduler.Domain.Entites.Service", "Service")
-                        .WithMany()
-                        .HasForeignKey("ServiceId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Service");
-                });
-
-            modelBuilder.Entity("BeautyScheduler.Domain.Entites.StaffService", b =>
-                {
-                    b.HasOne("BeautyScheduler.Domain.Entites.Service", "Service")
-                        .WithMany()
+                        .WithMany("StaffMembers")
                         .HasForeignKey("ServiceId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("BeautyScheduler.Domain.Entites.Staff", "Staff")
-                        .WithMany()
+                        .WithMany("Services")
                         .HasForeignKey("StaffId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -283,6 +283,16 @@ namespace BeautyScheduler.Data.Migrations
                     b.Navigation("Service");
 
                     b.Navigation("Staff");
+                });
+
+            modelBuilder.Entity("BeautyScheduler.Domain.Entites.Service", b =>
+                {
+                    b.Navigation("StaffMembers");
+                });
+
+            modelBuilder.Entity("BeautyScheduler.Domain.Entites.Staff", b =>
+                {
+                    b.Navigation("Services");
                 });
 #pragma warning restore 612, 618
         }
