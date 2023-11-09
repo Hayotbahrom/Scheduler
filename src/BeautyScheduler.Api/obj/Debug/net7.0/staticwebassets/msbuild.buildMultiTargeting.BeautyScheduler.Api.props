@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\BeautyScheduler.Api.props" />
+</Project>
