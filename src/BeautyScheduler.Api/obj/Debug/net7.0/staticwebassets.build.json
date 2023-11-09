@@ -1,11 +1,19 @@
 {
   "Version": 1,
-  "Hash": "eUmJ/hDZfc43dzPvsLmM7d/s2cWQaEvrEt+qXgXH++c=",
+  "Hash": "MJWuP3azTcWDeCe0tILhGvBti5+hqsCCPz8fx6DxACM=",
   "Source": "BeautyScheduler.Api",
   "BasePath": "_content/BeautyScheduler.Api",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "BeautyScheduler.Api\\wwwroot",
+      "Source": "BeautyScheduler.Api",
+      "ContentRoot": "C:\\Users\\Hayotbahrom\\Desktop\\FinalExamProject\\BeautyScheduler\\src\\BeautyScheduler.Api\\wwwroot\\",
+      "BasePath": "_content/BeautyScheduler.Api",
+      "Pattern": "**"
+    }
+  ],
   "Assets": []
 }

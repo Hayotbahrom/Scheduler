@@ -14,7 +14,7 @@ namespace BeautyScheduler.Api.Controllers.Customers
             _customerService = customerService;
         }
         [HttpPost]
-        public async Task<IActionResult> PostAsync(CustomerCreationDto dto)
+        public async Task<IActionResult> PostAsync([FromForm] CustomerCreationDto dto)
             => Ok(await _customerService.AddAsync(dto));
         
         [HttpGet]
@@ -30,7 +30,7 @@ namespace BeautyScheduler.Api.Controllers.Customers
             => Ok(await _customerService.RemoveAsync(id));
 
         [HttpPut]
-        public async Task<IActionResult> PutAsync(long id, CustomerUpdateDto dto)
+        public async Task<IActionResult> PutAsync(long id, [FromForm] CustomerUpdateDto dto)
             => Ok(await _customerService.ModifyAsync(id,dto));
     }
 }

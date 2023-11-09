@@ -49,3 +49,13 @@ C:\Users\Hayotbahrom\Desktop\FinalExamProject\BeautyScheduler\src\BeautySchedule
 C:\Users\Hayotbahrom\Desktop\FinalExamProject\BeautyScheduler\src\BeautyScheduler.Api\bin\Debug\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\Hayotbahrom\Desktop\FinalExamProject\BeautyScheduler\src\BeautyScheduler.Api\bin\Debug\net7.0\BeautyScheduler.Service.dll
 C:\Users\Hayotbahrom\Desktop\FinalExamProject\BeautyScheduler\src\BeautyScheduler.Api\bin\Debug\net7.0\BeautyScheduler.Service.pdb
+C:\Users\Hayotbahrom\Desktop\FinalExamProject\BeautyScheduler\src\BeautyScheduler.Api\bin\Debug\net7.0\Serilog.dll
+C:\Users\Hayotbahrom\Desktop\FinalExamProject\BeautyScheduler\src\BeautyScheduler.Api\bin\Debug\net7.0\Serilog.AspNetCore.dll
+C:\Users\Hayotbahrom\Desktop\FinalExamProject\BeautyScheduler\src\BeautyScheduler.Api\bin\Debug\net7.0\Serilog.Extensions.Hosting.dll
+C:\Users\Hayotbahrom\Desktop\FinalExamProject\BeautyScheduler\src\BeautyScheduler.Api\bin\Debug\net7.0\Serilog.Extensions.Logging.dll
+C:\Users\Hayotbahrom\Desktop\FinalExamProject\BeautyScheduler\src\BeautyScheduler.Api\bin\Debug\net7.0\Serilog.Formatting.Compact.dll
+C:\Users\Hayotbahrom\Desktop\FinalExamProject\BeautyScheduler\src\BeautyScheduler.Api\bin\Debug\net7.0\Serilog.Settings.Configuration.dll
+C:\Users\Hayotbahrom\Desktop\FinalExamProject\BeautyScheduler\src\BeautyScheduler.Api\bin\Debug\net7.0\Serilog.Sinks.Console.dll
+C:\Users\Hayotbahrom\Desktop\FinalExamProject\BeautyScheduler\src\BeautyScheduler.Api\bin\Debug\net7.0\Serilog.Sinks.Debug.dll
+C:\Users\Hayotbahrom\Desktop\FinalExamProject\BeautyScheduler\src\BeautyScheduler.Api\bin\Debug\net7.0\Serilog.Sinks.File.dll
+C:\Users\Hayotbahrom\Desktop\FinalExamProject\BeautyScheduler\src\BeautyScheduler.Api\bin\Debug\net7.0\BeautyScheduler.Api.staticwebassets.runtime.json

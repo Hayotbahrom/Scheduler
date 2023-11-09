@@ -23,6 +23,7 @@ public static class ServiceExtentions
         services.AddScoped<IStaffService, StaffService>();
         services.AddScoped<IServiceService, ServiceService>();
         services.AddScoped<IServiceStaffService, ServiceStaffService>();
+        services.AddScoped<IFileUploadService, FileUploadService>();
     }
 
 }

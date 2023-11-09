@@ -16,5 +16,6 @@ namespace BeautyScheduler.Domain.Entites
         public string Password { get; set; }
         public string Phone { get; set; }
         public Gender GenderType { get; set; }
+        public string IMAGE {  get; set; }
     }
 }
